@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { BREAKPOINTS, COLORS, WEIGHTS } from '../../constants';
+import { BREAKPOINTS, COLORS, QUERIES, WEIGHTS } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
@@ -47,11 +47,11 @@ const MainHeader = styled.div`
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
 
-  @media (max-width: ${BREAKPOINTS.tablet}) {
+  @media ${QUERIES.tabletAndSmaller} {
     background: gainsboro;
   }
 
-  @media (max-width: ${BREAKPOINTS.phone}) {
+  @media ${QUERIES.phoneAndSmaller} {
     background: purple;
   }
 `;
