@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { BREAKPOINTS, COLORS, QUERIES, WEIGHTS } from '../../constants';
+import { COLORS, QUERIES, WEIGHTS } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import Icon from '../Icon';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -28,6 +29,9 @@ const Header = () => {
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
+          <NavIcon id="shopping-bag" strokeWidth={2} />
+          <NavIcon id="search" strokeWidth={2} />
+          <NavIcon id="menu" strokeWidth={2} />
         </Nav>
         <Side />
       </MainHeader>
@@ -48,11 +52,13 @@ const MainHeader = styled.div`
   border-bottom: 1px solid ${COLORS.gray[300]};
 
   @media ${QUERIES.tabletAndSmaller} {
-    background: gainsboro;
+    border-top: 4px solid ${COLORS.gray[900]};
+    height: 68px;
+    align-items: center;
   }
 
   @media ${QUERIES.phoneAndSmaller} {
-    background: purple;
+    padding: 18px 16px;
   }
 `;
 
@@ -60,10 +66,24 @@ const Nav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    gap: 34px;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  @media ${QUERIES.phoneAndSmaller} {
+    gap: 16px;
+  }
 `;
 
 const Side = styled.div`
   flex: 1;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    flex: 0;
+  }
 `;
 
 const NavLink = styled.a`
@@ -75,6 +95,18 @@ const NavLink = styled.a`
 
   &:first-of-type {
     color: ${COLORS.secondary};
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: none;
+  }
+`;
+
+const NavIcon = styled(Icon)`
+  display: none;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: block;
   }
 `;
 
