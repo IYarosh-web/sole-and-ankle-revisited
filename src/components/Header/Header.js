@@ -5,6 +5,7 @@ import { COLORS, QUERIES, WEIGHTS } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 
 const Header = () => {
@@ -22,17 +23,25 @@ const Header = () => {
         <Side>
           <Logo />
         </Side>
-        <Nav>
+        <DesktopNav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
           <NavLink href="/men">Men</NavLink>
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
-          <NavIcon id="shopping-bag" strokeWidth={2} />
-          <NavIcon id="search" strokeWidth={2} />
-          <NavIcon id="menu" strokeWidth={2} />
-        </Nav>
+        </DesktopNav>
+        <MobileActions>
+          <UnstyledButton>
+            <Icon id="shopping-bag" strokeWidth={2} />
+          </UnstyledButton>
+          <UnstyledButton>
+            <Icon id="search" strokeWidth={2} />
+          </UnstyledButton>
+          <UnstyledButton>
+            <Icon id="menu" strokeWidth={2} />
+          </UnstyledButton>
+        </MobileActions>
         <Side />
       </MainHeader>
 
@@ -62,15 +71,23 @@ const MainHeader = styled.div`
   }
 `;
 
-const Nav = styled.nav`
+const DesktopNav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
 
   @media ${QUERIES.tabletAndSmaller} {
-    gap: 34px;
+    display: none;
+  }
+`;
+
+const MobileActions = styled.div`
+  display: none;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: flex;
     margin-left: auto;
-    margin-right: 0;
+    gap: 32px;
   }
 
   @media ${QUERIES.phoneAndSmaller} {
@@ -99,14 +116,6 @@ const NavLink = styled.a`
 
   @media ${QUERIES.tabletAndSmaller} {
     display: none;
-  }
-`;
-
-const NavIcon = styled(Icon)`
-  display: none;
-
-  @media ${QUERIES.tabletAndSmaller} {
-    display: block;
   }
 `;
 
